@@ -7,6 +7,7 @@ before_action :is_matching_login_user, only: [:edit, :update]
 
   def show
     @book = Book.find(params[:id])
+    @user = current_user
   end
 
   def index
@@ -39,15 +40,16 @@ before_action :is_matching_login_user, only: [:edit, :update]
     end
   end
 
-  def delete
+  def destroy
     @book = Book.find(params[:id])
-    @book.destoy
+    @book.destroy
+    flash[:notice]="Book was successfully destroyed."
     redirect_to books_path
   end
 
   private
 
   def book_params
-    params.require(:book).permit(:title)
+    params.require(:book).permit(:title, :body)
   end
 end
