@@ -29,12 +29,12 @@ before_action :ensure_correct_user, only: [:edit, :update, :destroy]
   end
 
   def edit
-      @user = User.find(params[:id])
-    if @user == current_user
-      render "edit"
-    else
-      redirect_to user_path(current_user)
-    end
+    #   @user = User.find(params[:id])
+    # if @user == current_user
+    #   render "edit"
+    # else
+    #   redirect_to user_path(current_user)
+    # end
   end
 
   def update
