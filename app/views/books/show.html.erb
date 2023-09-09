@@ -21,7 +21,7 @@
 
           <td>
             <% if @book.category.present? %>
-              <%=link_to @book.category,tagsearches_search_path(content :@book.category)%>
+              <%= link_to @book.category, tagsearches_search_path(content:@book.category) %>
             <% end %>
           </td>
 
@@ -32,7 +32,7 @@
           <td id="comment_counter">
             <%= render "book_comments/counter", book: @book %>
           </td>
-
+          <td><td>閲覧数: <%= @book.read_counts.count %></td></td>
           <td><%= render "static.rate", book: @book %></td>
           <% if @book.user == current_user %>
             <td><%= link_to 'Edit', edit_book_path(@book), class: "btn btn-sm btn-success edit_book_#{@book.id}" %></td>
